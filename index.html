@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPIEST BIRTHDAY DEAR PILLU ❤️</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --baby-pink: #fff0f3;
+            --pink-deep: #ff4d6d;
+            --accent-pink: #ff85a1;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--baby-pink);
+            scroll-behavior: smooth;
+        }
+
+        /* Glow & Animation for Heading */
+        .glow-text {
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ff85a1;
+            line-height: 1.4; 
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #fff, 0 0 20px #ff85a1; transform: scale(1); }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #ff4d6d, 0 0 40px #ff4d6d; transform: scale(1.02); }
+        }
+
+        /* Floating Hearts */
+        .heart-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+        }
+
+        .floating-heart {
+            position: absolute;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Polaroid Effect */
+        .polaroid {
+            @apply bg-white p-3 shadow-xl transition-all duration-300;
+            transform: rotate(var(--rotation));
+        }
+        .polaroid:hover {
+            @apply scale-105 z-10;
+            transform: rotate(0deg);
+            box-shadow: 0 20px 25px -5px rgba(255, 77, 109, 0.3);
+        }
+
+        /* Reason Card Styling */
+        .reason-card {
+            position: relative;
+            overflow: hidden;
+            @apply rounded-[2.5rem] shadow-lg flex flex-col items-center text-center hover:scale-105 transition-transform duration-300 min-h-[300px] justify-center;
+            box-shadow: 0 15px 30px rgba(255, 133, 161, 0.2);
+        }
+        .reason-card-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(4px);
+            opacity: 0.45;
+            z-index: 0;
+        }
+        .reason-card-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.35);
+            z-index: 1;
+        }
+        .reason-card-content {
+            position: relative;
+            z-index: 2;
+            /* Added more internal padding */
+            @apply p-8 md:p-10 flex flex-col items-center justify-center;
+        }
+
+        /* Hero Image Styles */
+        .hero-img-pink-shadow {
+            box-shadow: 0 0 25px rgba(255, 77, 109, 0.5);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden" onclick="playMusicOnce()">
+
+    <!-- Hidden Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="Kesariya.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="heart-bg" id="heartContainer"></div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 py-16 relative z-10">
+        
+        <!-- Three Photo Blocks Container -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-10 relative z-10">
+            
+            <!-- Box 1: Cake (Square) -->
+            <div class="w-36 h-36 md:w-44 md:h-44 bg-white p-2 rounded-2xl hero-img-pink-shadow rotate-[-6deg] hover:rotate-0 transition-all duration-500 overflow-hidden">
+                <img src="cake.jpg" alt="Cake" class="w-full h-full object-cover rounded-xl">
+            </div>
+
+            <!-- Box 2: Sakshi (Circular - Center) -->
+            <div class="w-48 h-48 md:w-64 md:h-64 bg-white p-2 rounded-full hero-img-pink-shadow z-20 scale-105 md:scale-110 hover:scale-115 transition-all duration-500 relative">
+                <div class="absolute -inset-2 bg-pink-400 rounded-full blur opacity-20 animate-pulse"></div>
+                <img src="2.jpg" alt="Sakshi" class="w-full h-full object-cover rounded-full relative z-10">
+            </div>
+
+            <!-- Box 3: Flowers (Square) -->
+            <div class="w-36 h-36 md:w-44 md:h-44 bg-white p-2 rounded-2xl hero-img-pink-shadow rotate-[6deg] hover:rotate-0 transition-all duration-500 overflow-hidden">
+                <img src="flower.jpg" alt="Flowers" class="w-full h-full object-cover rounded-xl">
+            </div>
+            
+        </div>
+
+        <h1 class="glow-text text-3xl md:text-6xl font-bold text-pink-600 mb-6 px-4 max-w-4xl mx-auto">
+            वाढदिवसाच्या खूप खूप शुभेच्छा साक्षु ! 🎂🌹
+        </h1>
+        
+        <div class="bg-white/70 backdrop-blur-md px-8 py-3 rounded-full shadow-lg border border-white/50 inline-block">
+            <p class="text-lg md:text-2xl font-semibold text-pink-700 italic">- तुझा विनय ❤️</p>
+        </div>
+
+        <div class="mt-12 animate-bounce">
+            <svg class="w-10 h-10 text-pink-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section class="py-20 container mx-auto px-6 relative z-10">
+        <h2 class="text-2xl md:text-4xl font-bold text-center text-pink-600 mb-16">ह्या BIRTHDAY निमित्त माझ्या WISHES✨</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            <!-- Photo 1 -->
+            <div class="polaroid mx-auto w-full max-w-[320px]" style="--rotation: -3deg;">
+                <img src="11.jpeg" class="w-full h-64 md:h-72 object-cover mb-4">
+                <p class="text-center font-bold text-gray-700 italic">कधीच चेहऱ्यावर SMILE कमी नको होऊ देऊ 😍</p>
+            </div>
+            <!-- Photo 2 -->
+            <div class="polaroid mx-auto w-full max-w-[320px]" style="--rotation: 2deg;">
+                <img src="2.jpg" class="w-full h-64 md:h-72 object-cover mb-4">
+                <p class="text-center font-bold text-gray-700 italic">नेहमी अशीच आनंदी राहा! 🌟</p>
+            </div>
+            <!-- Photo 3 -->
+            <div class="polaroid mx-auto w-full max-w-[320px]" style="--rotation: -2deg;">
+                <img src="8.jpeg" class="w-full h-64 md:h-72 object-cover mb-4">
+                <p class="text-center font-bold text-gray-700 italic">नेहमी FEEL होत की तूच माझ्या HAPPINESS च कारण आहेस. ❤️</p>
+            </div>
+            <!-- Photo 4 -->
+            <div class="polaroid mx-auto w-full max-w-[320px]" style="--rotation: 2deg;">
+                <img src="13.jpeg" class="w-full h-64 md:h-72 object-cover mb-4">
+                <p class="text-center font-bold text-gray-700 italic">प्रत्येक क्षणी तुझी साथ हवी! ✨</p>
+            </div>
+            <!-- Photo 5 -->
+            <div class="polaroid mx-auto w-full max-w-[320px]" style="--rotation: -3deg;">
+                <img src="14.jpeg" class="w-full h-64 md:h-72 object-cover mb-4">
+                <p class="text-center font-bold text-gray-700 italic">तुझे सर्व स्वप्न पूर्ण व्हावेत...! 🥰</p>
+            </div>
+            <!-- Photo 6 -->
+            <div class="polaroid mx-auto w-full max-w-[320px]" style="--rotation: 3deg;">
+                <img src="9.jpeg" class="w-full h-64 md:h-72 object-cover mb-4">
+                <p class="text-center font-bold text-gray-700 italic">आजचा दिवस फक्त तुझा आहे! 🎂</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Box -->
+    <section class="py-20 bg-white/50 relative z-10 backdrop-blur-sm border-y border-pink-100">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="mb-6 flex justify-center text-5xl">❤️</div>
+            <h2 class="text-2xl md:text-3xl font-bold text-pink-600 mb-8">माझ्या मनातील FEELINGS...</h2>
+            <p class="text-lg md:text-xl leading-relaxed md:leading-loose text-gray-800 italic font-medium">
+                "साक्षु, तू माझ्या सोबत असण मला खूप खूप जास्त आवडत ! मग ते तुझ माझ्यावर रागवण असेल, मला चिडवण असेल मला खूप जास्त आवडत. तू माझ्या LIFE ची एक IMPORTANT PERSON आहेस... तू माझ्यासाठी जे काही आहेस, ते मी WORDS मध्ये नाही सांगू शकत... मला तुझ्या सोबत खूप अशा MEMORIES बनवायच्या आहेत... मी नेहमी असा प्रयत्न ठेवेल की तू जास्तीत जास्त खुश व्हावी... तुझासोबत मला जेवढा जास्त TIME SPEND करता येईल तेवढा करायचा आहे, IN-FUTURE जर आपण सोबत असलो, तर तुझी LIFE मी एखाद्या जन्नत सारखी बनवेन. आणि तू उदास नाही राहायचं हं कधी..! एवढ्या गोड चेहऱ्यावर फक्त SMILE चांगली वाटते बस...! आणि तुला कधी पण काही PROBLEM वाटला, काही हव असल, काहीही म्हणजे काहीही लागल तर बिंदास्त ORDER देत जा, तुम्हारा ये जोरू का गुलाम हाजीर रहेगा 😂. आजचा दिवस तुझा आहे, तू खूप जास्त खुश राहावी तुझे सर्व स्वप्न पूर्ण व्हावे, पप्पा-मम्मीना खूप खुश करशील अशी मी देवाला प्रार्थना करेल. जर चुकून किवा नकळत पणे तुझ मन दुखवल असेल तर SORRY ! पण LOVE YOU SOO MUCH BALA....!!!"
+            </p>
+        </div>
+    </section>
+
+    <!-- 6 Reason Blocks -->
+    <section class="py-20 relative z-10">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl md:text-4xl font-bold text-center text-pink-600 mb-16">तुझ्याबद्दल काही खास गोष्टी 💖</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- Block 1 -->
+                <div class="reason-card">
+                    <div class="reason-card-img" style="background-image: url('1.jpg');"></div>
+                    <div class="reason-card-overlay"></div>
+                    <div class="reason-card-content">
+                        <!-- Centered Emoji -->
+                        <div class="text-5xl mb-6">🥺</div>
+                        <!-- Centered Title with bottom margin -->
+                        <h3 class="text-2xl font-bold text-pink-600 mb-4">तुझा निरागसपणा</h3>
+                        <p class="text-gray-800 font-medium leading-relaxed">तुझं निरागस वागणं आणि तुझं छोट्या गोष्टींमध्येही आनंद शोधणं मला खूप आवडत.</p>
+                    </div>
+                </div>
+
+                <!-- Block 2 -->
+                <div class="reason-card">
+                    <div class="reason-card-img" style="background-image: url('2.jpg');"></div>
+                    <div class="reason-card-overlay"></div>
+                    <div class="reason-card-content">
+                        <div class="text-5xl mb-6">🦋</div>
+                        <h3 class="text-2xl font-bold text-pink-600 mb-4">तुझ सोबत असण</h3>
+                        <p class="text-gray-800 font-medium leading-relaxed">तू माझ्या सोबत असण मला एक वेगळ MOTIVATION देत.</p>
+                    </div>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="reason-card">
+                    <div class="reason-card-img" style="background-image: url('3.jpg');"></div>
+                    <div class="reason-card-overlay"></div>
+                    <div class="reason-card-content">
+                        <div class="text-5xl mb-6">🧿</div>
+                        <h3 class="text-2xl font-bold text-pink-600 mb-4">तुझे डोळे</h3>
+                        <p class="text-gray-800 font-medium leading-relaxed">तुझे डोळे एवढे सुंदर आहेत, की ते मला नेहमी तुझा प्रेमात पडतात...!</p>
+                    </div>
+                </div>
+
+                <!-- Block 4 -->
+                <div class="reason-card">
+                    <div class="reason-card-img" style="background-image: url('4.jpg');"></div>
+                    <div class="reason-card-overlay"></div>
+                    <div class="reason-card-content">
+                        <div class="text-5xl mb-6">🧸</div>
+                        <h3 class="text-2xl font-bold text-pink-600 mb-4">तुझा राग</h3>
+                        <p class="text-gray-800 font-medium leading-relaxed">तुझ्या रागाने भले मला थोड वाईट वाटत असेल, पण मज्जा येते यार..!! राग केला नाहीस तू तर मला करमत नाही माहितीये...!</p>
+                    </div>
+                </div>
+
+                <!-- Block 5 -->
+                <div class="reason-card">
+                    <div class="reason-card-img" style="background-image: url('5.jpg');"></div>
+                    <div class="reason-card-overlay"></div>
+                    <div class="reason-card-content">
+                        <div class="text-5xl mb-6">🍯</div>
+                        <h3 class="text-2xl font-bold text-pink-600 mb-4">तुझं बोलणं</h3>
+                        <p class="text-gray-800 font-medium leading-relaxed">तुझ्याशी बोलताना वेळ कसा निघून जातो हे कधीच समजत नाही, तुझ्या गप्पा खूप आवडतात. वाटत की तू फक्त बोलत राहावी, आणि मी फक्त ऐकत राहावं, आणि तुझ्याकडे बघत राहावं...!</p>
+                    </div>
+                </div>
+
+                <!-- Block 6 -->
+                <div class="reason-card">
+                    <div class="reason-card-img" style="background-image: url('6.jpeg');"></div>
+                    <div class="reason-card-overlay"></div>
+                    <div class="reason-card-content">
+                        <div class="text-5xl mb-6">💍</div>
+                        <h3 class="text-2xl font-bold text-pink-600 mb-4">तुझ्यासोबत वेळ</h3>
+                        <p class="text-gray-800 font-medium leading-relaxed">तुझ्यासोबतचे ४ ते ५ तास एखाद्या मिनिट सारखे निघून जातात की ते समजतच नाही...!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Surprise Button Section -->
+    <section class="py-24 text-center relative z-10">
+        <button onclick="openModal()" class="bg-gradient-to-r from-pink-500 to-red-500 text-white text-xl md:text-2xl font-bold py-5 px-10 rounded-full shadow-[0_15px_30px_rgba(255,77,109,0.4)] hover:scale-110 active:scale-95 transition-all duration-300 animate-bounce">
+            प्रेमल मेसेज (Open Here) 💌
+        </button>
+    </section>
+
+    <footer class="py-12 text-center text-pink-400 font-bold bg-white/10 backdrop-blur-sm">
+        Made with ❤️ for Sakshi by Vinay
+    </footer>
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="fixed inset-0 bg-black/70 z-[2000] hidden items-center justify-center p-4 backdrop-blur-md">
+        <div id="loveModal" class="bg-white rounded-[35px] p-8 md:p-12 max-w-md w-full text-center relative shadow-2xl border-4 border-pink-100">
+            
+            <div id="modalContent">
+                <div class="text-5xl md:text-6xl mb-6 animate-pulse">🥰</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-pink-600 mb-4">माझं पिल्लू, ❤️</h2>
+                <p class="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed font-medium italic">
+                    "नेहमी माझ्या सोबत राहा, मी तुला आनंदी ठेवण्यासाठी माझं १००% देईन. Happiest Birthday Cutieee....!!!"
+                </p>
+                <div class="flex justify-center">
+                    <button onclick="handleYes()" class="bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-all active:scale-90 text-lg">
+                        I Love You ❤️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div id="successState" class="hidden">
+                <div class="text-5xl md:text-6xl mb-6 animate-bounce">😘💋❤️😍</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-pink-600 mb-8 glow-text">I LOVE YOU TOOO ❤️✨</h2>
+                <button onclick="closeModal()" class="bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold py-3 px-8 rounded-full transition-colors">Close (X)</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Floating Hearts Logic
+        const heartContainer = document.getElementById('heartContainer');
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+            heart.style.opacity = '0.6';
+            heartContainer.appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 400);
+
+        // Music Logic
+        const bgMusic = document.getElementById('bgMusic');
+        let musicStarted = false;
+
+        function playMusicOnce() {
+            if (!musicStarted) {
+                bgMusic.play().catch(e => console.log("Music play blocked by browser. Click anywhere to play."));
+                musicStarted = true;
+            }
+        }
+
+        // Modal Logic
+        const modalOverlay = document.getElementById('modalOverlay');
+        const loveModal = document.getElementById('loveModal');
+        const modalContent = document.getElementById('modalContent');
+        const successState = document.getElementById('successState');
+
+        function openModal() {
+            modalOverlay.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modalOverlay.style.display = 'none';
+            modalContent.style.display = 'block';
+            successState.style.display = 'none';
+        }
+
+        function createEmojiRain(icons) {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const e = document.createElement('div');
+                    e.innerText = icons[Math.floor(Math.random() * icons.length)];
+                    e.style.position = 'fixed';
+                    e.style.left = Math.random() * 100 + 'vw';
+                    e.style.top = '-50px';
+                    e.style.fontSize = '2.5rem';
+                    e.style.zIndex = '3000';
+                    e.style.transition = 'all 2.5s linear';
+                    document.body.appendChild(e);
+                    setTimeout(() => {
+                        e.style.top = '110vh';
+                        e.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    }, 50);
+                    setTimeout(() => e.remove(), 2600);
+                }, i * 60);
+            }
+        }
+
+        function handleYes() {
+            modalContent.style.display = 'none';
+            successState.style.display = 'block';
+            createEmojiRain(['😘', '💋', '❤️', '😍', '✨', '🌸', '💖']);
+            
+            // Celebration Background
+            document.body.style.backgroundColor = "#fff5f8";
+            
+            const fastHearts = setInterval(createHeart, 100);
+            setTimeout(() => clearInterval(fastHearts), 8000);
+        }
+    </script>
+</body>
+</html>
